@@ -1,2054 +1,240 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAUCK Stage — Seu Palco Digital</title>
-<meta name="description" content="Sites premium para DJs, produtores e artistas da noite. Landing page + press kit + player + booking + central de downloads. Seu palco digital começa aqui.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-/* ═══════════════════════════════════════════
-   HAUCK Stage — Landing Page Styles
-   ═══════════════════════════════════════════ */
-
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --bg-primary: #050505;
-  --bg-secondary: #0c0c0c;
-  --bg-card: #111111;
-  --bg-card-hover: #161616;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
-  --accent-red: #ff1744;
-  --accent-red-dark: #d50000;
-  --accent-gold: #ffab00;
-  --accent-gold-light: #ffd740;
-  --border-subtle: rgba(255,255,255,0.06);
-  --border-accent: rgba(255,23,68,0.3);
-  --glow-red: 0 0 40px rgba(255,23,68,0.15);
-  --glow-gold: 0 0 40px rgba(255,171,0,0.12);
-  --radius: 12px;
-  --radius-lg: 20px;
-  --font-heading: 'Oswald', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --max-width: 1200px;
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-body);
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* ── NAV ──────────────────────────────── */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 16px 0;
-  background: rgba(5,5,5,0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-subtle);
-  transition: var(--transition);
-}
-
-.nav .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-logo {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.nav-logo span {
-  color: var(--accent-red);
-}
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-  align-items: center;
-}
-
-.nav-links a {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: color var(--transition);
-  letter-spacing: 0.5px;
-}
-
-.nav-links a:hover {
-  color: var(--text-primary);
-}
-
-.nav-cta {
-  background: var(--accent-red);
-  color: white !important;
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.82rem;
-  letter-spacing: 0.5px;
-  transition: all var(--transition);
-}
-
-.nav-cta:hover {
-  background: var(--accent-red-dark);
-  transform: translateY(-1px);
-}
-
-.mobile-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* ── HERO ─────────────────────────────── */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-top: 80px;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -200px;
-  right: -200px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,23,68,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -100px;
-  left: -150px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255,171,0,0.05) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  background: rgba(255,23,68,0.1);
-  border: 1px solid rgba(255,23,68,0.2);
-  border-radius: 100px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--accent-red);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 24px;
-}
-
-.hero-badge::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--accent-red);
-  border-radius: 50%;
-  animation: pulse-dot 2s infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-.hero h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 5.5vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.05;
-  text-transform: uppercase;
-  letter-spacing: -0.5px;
-  margin-bottom: 24px;
-}
-
-.hero h1 .accent {
-  background: linear-gradient(135deg, var(--accent-red), var(--accent-gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-sub {
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 40px;
-  max-width: 520px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 36px;
-  background: linear-gradient(135deg, var(--accent-red), var(--accent-red-dark));
-  color: white;
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  transition: all var(--transition);
-  box-shadow: 0 4px 24px rgba(255,23,68,0.25);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(255,23,68,0.35);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 36px;
-  background: transparent;
-  color: var(--text-primary);
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border-radius: 10px;
-  border: 1px solid var(--border-subtle);
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.btn-secondary:hover {
-  border-color: rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.03);
-}
-
-.hero-visual {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-mockup {
-  width: 100%;
-  max-width: 480px;
-  aspect-ratio: 9/16;
-  background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: var(--glow-red), 0 20px 60px rgba(0,0,0,0.5);
-  overflow: hidden;
-  position: relative;
-}
-
-.hero-mockup::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg,
-    rgba(255,23,68,0.05) 0%,
-    transparent 30%,
-    transparent 70%,
-    rgba(255,171,0,0.03) 100%
-  );
-  z-index: 1;
-}
-
-.mockup-content {
-  padding: 32px 24px;
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.mockup-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-red), var(--accent-gold));
-  margin: 0 auto 16px;
-}
-
-.mockup-name {
-  font-family: var(--font-heading);
-  font-size: 1.3rem;
-  text-align: center;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.mockup-tag {
-  text-align: center;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-
-.mockup-player {
-  background: rgba(255,255,255,0.04);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-.mockup-track {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.mockup-play {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--accent-red);
-  flex-shrink: 0;
-}
-
-.mockup-track-info {
-  flex: 1;
-}
-
-.mockup-track-title {
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.mockup-track-artist {
-  font-size: 0.65rem;
-  color: var(--text-muted);
-}
-
-.mockup-waveform {
-  height: 24px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255,23,68,0.3) 0px,
-    rgba(255,23,68,0.3) 2px,
-    transparent 2px,
-    transparent 4px
-  );
-  border-radius: 4px;
-  position: relative;
-}
-
-.mockup-waveform::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 60%;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--accent-red) 0px,
-    var(--accent-red) 2px,
-    transparent 2px,
-    transparent 4px
-  );
-  border-radius: 4px;
-}
-
-.mockup-btn {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, var(--accent-red), var(--accent-red-dark));
-  border-radius: 8px;
-  text-align: center;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-top: auto;
-}
-
-.mockup-social {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.mockup-social-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-/* ── SECTION BASE ─────────────────────── */
-section {
-  padding: 100px 0;
-  position: relative;
-}
-
-.section-label {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--accent-red);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 16px;
-}
-
-.section-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.section-desc {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  max-width: 600px;
-  line-height: 1.7;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-center .section-desc {
-  margin: 0 auto;
-}
-
-/* ── PALCO DIGITAL ────────────────────── */
-.palco {
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.palco .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.palco-features {
-  display: grid;
-  gap: 24px;
-  margin-top: 40px;
-}
-
-.palco-feature {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.palco-feature-icon {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(255,23,68,0.08);
-  border: 1px solid rgba(255,23,68,0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-
-.palco-feature h4 {
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}
-
-.palco-feature p {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-.palco-visual {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.palco-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
-  padding: 24px;
-  transition: all var(--transition);
-}
-
-.palco-card:hover {
-  border-color: rgba(255,23,68,0.2);
-  transform: translateY(-4px);
-}
-
-.palco-card:nth-child(1) { grid-column: span 2; }
-
-.palco-card-icon {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
-}
-
-.palco-card h5 {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 6px;
-}
-
-.palco-card p {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
-/* ── PLANOS ───────────────────────────── */
-.planos {
-  padding-bottom: 120px;
-}
-
-.planos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 60px;
-}
-
-.plano-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 40px 32px;
-  position: relative;
-  transition: all var(--transition);
-  display: flex;
-  flex-direction: column;
-}
-
-.plano-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255,255,255,0.1);
-}
-
-.plano-card.featured {
-  border-color: var(--accent-red);
-  box-shadow: var(--glow-red);
-  background: linear-gradient(180deg, rgba(255,23,68,0.04), var(--bg-card));
-}
-
-.plano-badge {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, var(--accent-red), var(--accent-gold));
-  color: white;
-  padding: 4px 20px;
-  border-radius: 100px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.plano-icon {
-  font-size: 2rem;
-  margin-bottom: 16px;
-}
-
-.plano-name {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-
-.plano-desc {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 28px;
-  min-height: 54px;
-}
-
-.plano-divider {
-  height: 1px;
-  background: var(--border-subtle);
-  margin-bottom: 28px;
-}
-
-.plano-features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 36px;
-  flex: 1;
-}
-
-.plano-features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-.plano-features li::before {
-  content: '✓';
-  color: var(--accent-red);
-  font-weight: 700;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.plano-features li.highlight {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-.plano-cta {
-  display: block;
-  width: 100%;
-  padding: 16px;
-  text-align: center;
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.plano-cta.primary {
-  background: linear-gradient(135deg, var(--accent-red), var(--accent-red-dark));
-  color: white;
-  box-shadow: 0 4px 20px rgba(255,23,68,0.2);
-}
-
-.plano-cta.primary:hover {
-  box-shadow: 0 8px 28px rgba(255,23,68,0.35);
-  transform: translateY(-2px);
-}
-
-.plano-cta.outline {
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
-}
-
-.plano-cta.outline:hover {
-  border-color: var(--accent-red);
-  color: var(--accent-red);
-}
-
-/* ── DEMO/CASE ────────────────────────── */
-.demo {
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-  overflow: hidden;
-}
-
-.demo .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-.demo-browser {
-  background: #0a0a0a;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-subtle);
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-}
-
-.demo-browser-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 18px;
-  background: rgba(255,255,255,0.03);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.demo-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-}
-
-.demo-dot:nth-child(1) { background: #ff5f57; }
-.demo-dot:nth-child(2) { background: #febc2e; }
-.demo-dot:nth-child(3) { background: #28c840; }
-
-.demo-url {
-  flex: 1;
-  margin-left: 12px;
-  padding: 6px 14px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 6px;
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  font-family: 'SF Mono', 'Fira Code', monospace;
-}
-
-.demo-screen {
-  aspect-ratio: 16/10;
-  background: linear-gradient(145deg, #111, #0a0a0a);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  position: relative;
-}
-
-.demo-screen::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(255,23,68,0.06), transparent 60%);
-}
-
-.demo-screen-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ff6b35, #e91e63);
-  margin-bottom: 12px;
-  position: relative;
-  z-index: 1;
-}
-
-.demo-screen-name {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  position: relative;
-  z-index: 1;
-  margin-bottom: 4px;
-}
-
-.demo-screen-tag {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  position: relative;
-  z-index: 1;
-  margin-bottom: 20px;
-}
-
-.demo-screen-bars {
-  display: flex;
-  gap: 3px;
-  align-items: flex-end;
-  height: 40px;
-  position: relative;
-  z-index: 1;
-}
-
-.demo-bar {
-  width: 3px;
-  border-radius: 2px;
-  background: var(--accent-red);
-  opacity: 0.6;
-}
-
-.demo-info h3 {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  color: var(--accent-gold);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 16px;
-}
-
-.demo-info h2 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.demo-info p {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 32px;
-}
-
-.demo-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-.demo-stat {
-  text-align: center;
-  padding: 16px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
-}
-
-.demo-stat-value {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--accent-red);
-}
-
-.demo-stat-label {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 2px;
-}
-
-/* ── BENEFÍCIOS ───────────────────────── */
-.beneficios-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 60px;
-}
-
-.beneficio {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 36px 28px;
-  transition: all var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.beneficio::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-
-.beneficio:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255,23,68,0.15);
-}
-
-.beneficio:hover::before {
-  opacity: 1;
-}
-
-.beneficio-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: rgba(255,23,68,0.06);
-  border: 1px solid rgba(255,23,68,0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-}
-
-.beneficio h4 {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
-}
-
-.beneficio p {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* ── COMO FUNCIONA ────────────────────── */
-.como-funciona {
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  margin-top: 60px;
-  position: relative;
-}
-
-.steps-grid::before {
-  content: '';
-  position: absolute;
-  top: 36px;
-  left: 60px;
-  right: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent-red), var(--accent-gold));
-  opacity: 0.15;
-}
-
-.step {
-  text-align: center;
-  position: relative;
-}
-
-.step-number {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: var(--bg-card);
-  border: 2px solid var(--accent-red);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 24px;
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--accent-red);
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 0 20px rgba(255,23,68,0.1);
-}
-
-.step h4 {
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
-}
-
-.step p {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* ── GALERIA / MODELOS ────────────────── */
-.galeria-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 60px;
-}
-
-.galeria-item {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: all var(--transition);
-  cursor: pointer;
-  position: relative;
-}
-
-.galeria-item:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255,23,68,0.2);
-  box-shadow: var(--glow-red);
-}
-
-.galeria-preview {
-  aspect-ratio: 9/14;
-  background: linear-gradient(145deg, #151515, #0c0c0c);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.galeria-preview::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.8));
-}
-
-.galeria-preview-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-bottom: 12px;
-  position: relative;
-  z-index: 1;
-}
-
-.galeria-item:nth-child(1) .galeria-preview-circle { background: linear-gradient(135deg, #ff6b35, #e91e63); }
-.galeria-item:nth-child(2) .galeria-preview-circle { background: linear-gradient(135deg, #00bcd4, #2196f3); }
-.galeria-item:nth-child(3) .galeria-preview-circle { background: linear-gradient(135deg, #ffd740, #ff6d00); }
-
-.galeria-preview-name {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  position: relative;
-  z-index: 1;
-  margin-bottom: 4px;
-}
-
-.galeria-preview-genre {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  position: relative;
-  z-index: 1;
-}
-
-.galeria-preview-elements {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.galeria-bar {
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(255,255,255,0.08);
-}
-
-.galeria-bar:nth-child(1) { width: 70%; }
-.galeria-bar:nth-child(2) { width: 90%; }
-.galeria-bar:nth-child(3) { width: 50%; }
-
-.galeria-info {
-  padding: 20px;
-}
-
-.galeria-info h4 {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 4px;
-}
-
-.galeria-info p {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
-.galeria-tag {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 4px 12px;
-  border-radius: 100px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.galeria-tag.warmup { background: rgba(255,171,0,0.1); color: var(--accent-gold); border: 1px solid rgba(255,171,0,0.2); }
-.galeria-tag.mainstage { background: rgba(255,23,68,0.1); color: var(--accent-red); border: 1px solid rgba(255,23,68,0.2); }
-.galeria-tag.headliner { background: linear-gradient(135deg, rgba(255,23,68,0.15), rgba(255,171,0,0.15)); color: var(--accent-gold-light); border: 1px solid rgba(255,215,64,0.2); }
-
-/* ── FAQ ──────────────────────────────── */
-.faq {
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.faq-list {
-  max-width: 800px;
-  margin: 60px auto 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.faq-item {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: border-color var(--transition);
-}
-
-.faq-item.active {
-  border-color: rgba(255,23,68,0.2);
-}
-
-.faq-question {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 22px 28px;
-  cursor: pointer;
-  user-select: none;
-  gap: 16px;
-}
-
-.faq-question h4 {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  flex: 1;
-}
-
-.faq-toggle {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border-subtle);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  color: var(--accent-red);
-  flex-shrink: 0;
-  transition: all var(--transition);
-}
-
-.faq-item.active .faq-toggle {
-  background: rgba(255,23,68,0.1);
-  transform: rotate(45deg);
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-}
-
-.faq-answer-inner {
-  padding: 0 28px 24px;
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
-.faq-item.active .faq-answer {
-  max-height: 300px;
-}
-
-/* ── CTA FINAL ────────────────────────── */
-.cta-final {
-  padding: 120px 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-final::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,23,68,0.08) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.cta-final h2 {
-  font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  position: relative;
-}
-
-.cta-final p {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  margin-bottom: 48px;
-  max-width: 550px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
-
-.cta-final .btn-primary {
-  font-size: 1.1rem;
-  padding: 20px 48px;
-  position: relative;
-}
-
-.cta-whatsapp-icon {
-  display: inline-block;
-  margin-right: 4px;
-}
-
-/* ── FOOTER ───────────────────────────── */
-.footer {
-  padding: 40px 0;
-  border-top: 1px solid var(--border-subtle);
-  text-align: center;
-}
-
-.footer p {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-}
-
-.footer a {
-  color: var(--accent-red);
-  transition: color var(--transition);
-}
-
-.footer a:hover {
-  color: var(--accent-gold);
-}
-
-/* ── RESPONSIVE ───────────────────────── */
-@media (max-width: 1024px) {
-  .hero .container,
-  .palco .container,
-  .demo .container {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .planos-grid {
-    grid-template-columns: 1fr;
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .beneficios-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .steps-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 48px;
-  }
-
-  .steps-grid::before {
-    display: none;
-  }
-
-  .galeria-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .demo-stats {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .hero-visual {
-    order: -1;
-  }
-
-  .hero-mockup {
-    max-width: 320px;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 768px) {
-  section { padding: 72px 0; }
-
-  .nav-links { display: none; }
-  .mobile-toggle { display: block; }
-
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(5,5,5,0.97);
-    backdrop-filter: blur(20px);
-    padding: 24px;
-    gap: 20px;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .hero { min-height: auto; padding: 120px 0 80px; }
-
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .btn-primary, .btn-secondary {
-    justify-content: center;
-  }
-
-  .palco-visual {
-    grid-template-columns: 1fr;
-  }
-
-  .palco-card:nth-child(1) { grid-column: auto; }
-
-  .beneficios-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .steps-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .galeria-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .demo-stats {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
-</head>
-<body>
-
-<!-- ═══ NAV ═══════════════════════════════════ -->
-<nav class="nav" id="nav">
-  <div class="container">
-    <a href="#" class="nav-logo">HAUCK<span>.</span>Stage</a>
-    <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
-    <ul class="nav-links">
-      <li><a href="#palco">O Produto</a></li>
-      <li><a href="#planos">Planos</a></li>
-      <li><a href="#demo">Demo</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="https://wa.me/5534997683468?text=Quero%20saber%20mais%20sobre%20o%20HAUCK%20Stage" target="_blank" rel="noopener" class="nav-cta">Quero meu site</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- ═══ HERO ══════════════════════════════════ -->
-<section class="hero" id="hero">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge">HAUCK.CO &mdash; Premium Sites</div>
-      <h1>
-        Seu <span class="accent">palco digital</span><br>
-        começa aqui
-      </h1>
-      <p class="hero-sub">
-        Landing page + press kit + player + booking + central de downloads.
-        Tudo que um DJ precisa pra ter presença profissional online &mdash;
-        sem depender de Linktree, sem parecer amador.
-      </p>
-      <div class="hero-buttons">
-        <a href="https://wa.me/5534997683468?text=Quero%20meu%20site%20de%20DJ%20%E2%80%94%20HAUCK%20Stage" target="_blank" rel="noopener" class="btn-primary">
-          <span class="cta-whatsapp-icon">&#9998;</span> Quero meu site de DJ
-        </a>
-        <a href="#planos" class="btn-secondary">Ver modelos &darr;</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-mockup">
-        <div class="mockup-content">
-          <div class="mockup-avatar"></div>
-          <div class="mockup-name">DJ Nome</div>
-          <div class="mockup-tag">Tech House &bull; S&atilde;o Paulo</div>
-          <div class="mockup-player">
-            <div class="mockup-track">
-              <div class="mockup-play"></div>
-              <div class="mockup-track-info">
-                <div class="mockup-track-title">Midnight Groove (Original Mix)</div>
-                <div class="mockup-track-artist">DJ Nome</div>
-              </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#07090d" />
+    <meta
+      name="description"
+      content="HAUCK Stage — presença digital, catálogo, booking e experiências para DJs e artistas."
+    />
+    <title>HAUCK Stage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="#top"><b>HAUCK</b><i>Stage</i></a
+      ><button class="menu" aria-label="Abrir menu">☰</button>
+      <nav>
+        <a href="#solucao">Solução</a><a href="#planos">Planos</a
+        ><a href="#case">Case</a
+        ><a href="#contato" class="pill">Quero meu palco</a>
+      </nav>
+    </header>
+    <main id="top">
+      <section class="hero wrap">
+        <div class="copy">
+          <p class="eyebrow">Presença digital para DJs e artistas</p>
+          <h1>Seu som merece mais que um <em>link na bio.</em></h1>
+          <p class="lead">
+            Transforme catálogo, agenda, booking, downloads e identidade em uma
+            experiência digital que trabalha pela sua carreira.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#planos">Conhecer os planos</a
+            ><a class="btn ghost" href="#case">Ver um case real</a>
+          </div>
+          <div class="proof">
+            Identidade própria · Mobile-first · Booking direto
+          </div>
+        </div>
+        <div class="mock">
+          <div class="phone">
+            <span class="tag">YOUR NAME</span>
+            <div class="wave"></div>
+            <div class="player">
+              <b>Faixa em destaque</b><small>Original Mix · 06:42</small
+              ><button>▶</button>
             </div>
-            <div class="mockup-waveform"></div>
+            <div class="tiles"><span>Agenda</span><span>Booking</span></div>
           </div>
-          <div class="mockup-player" style="opacity:0.6">
-            <div class="mockup-track">
-              <div class="mockup-play" style="opacity:0.5"></div>
-              <div class="mockup-track-info">
-                <div class="mockup-track-title">After Dark (Remix)</div>
-                <div class="mockup-track-artist">DJ Nome ft. Artista</div>
-              </div>
+          <div class="float a">Catálogo<br /><b>Faixas, sets e packs</b></div>
+          <div class="float b">Conversão<br /><b>Fã → oportunidade</b></div>
+        </div>
+      </section>
+      <section class="statement wrap">
+        <p class="eyebrow">O problema</p>
+        <h2>Não é só um site.<br />É o palco digital da sua carreira.</h2>
+        <p>
+          Redes sociais alugam atenção. A HAUCK Stage organiza sua presença em
+          um endereço próprio, com narrativa, controle e caminho claro para fãs,
+          contratantes e parceiros.
+        </p>
+      </section>
+      <section id="solucao" class="wrap">
+        <div class="heading">
+          <p class="eyebrow">Mais que presença</p>
+          <h2>
+            Um ecossistema que vende sua música antes mesmo de você entrar em
+            cena.
+          </h2>
+        </div>
+        <div class="grid features">
+          <article>
+            <span>01</span>
+            <h3>Identidade artística</h3>
+            <p>Visual, tom e experiência construídos para sua assinatura.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Catálogo e player</h3>
+            <p>Faixas, sets, previews, free downloads e lançamentos.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Booking e agenda</h3>
+            <p>Fluxo objetivo para contratantes e parceiros.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Loja e monetização</h3>
+            <p>Música, packs, produtos e experiências próprias.</p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>Press kit vivo</h3>
+            <p>Bio, números, fotos, vídeos e materiais profissionais.</p>
+          </article>
+          <article>
+            <span>06</span>
+            <h3>Evolução modular</h3>
+            <p>Comece enxuto e cresça sem reconstruir tudo.</p>
+          </article>
+        </div>
+      </section>
+      <section id="planos" class="wrap">
+        <div class="heading">
+          <p class="eyebrow">Escolha o tamanho do seu palco</p>
+          <h2>Três níveis. Uma mesma assinatura.</h2>
+          <p>
+            Preços, limites e links ficam centralizados em
+            <code>config.js</code>.
+          </p>
+        </div>
+        <div id="plans" class="grid plans"></div>
+      </section>
+      <section id="case" class="wrap case">
+        <div>
+          <p class="eyebrow">Case em movimento</p>
+          <h2>Apolo Oliver:<br />um artista, três experiências conectadas.</h2>
+          <p class="lead">
+            O projeto reúne presença institucional, hub comercial e loja
+            digital. Cada peça cumpre uma função, mas todas pertencem ao mesmo
+            universo.
+          </p>
+          <ul>
+            <li>
+              <b>Press kit digital:</b> catálogo, agenda, números, mídia e
+              booking.
+            </li>
+            <li>
+              <b>Hub comercial:</b> packs, prévias, serviços e contratação.
+            </li>
+            <li><b>Loja digital:</b> faixas, packs e downloads exclusivos.</li>
+          </ul>
+          <div class="actions">
+            <a class="btn primary" data-link="apoloMain" href="#">Abrir case</a
+            ><a class="btn ghost" data-link="apoloStore" href="#">Ver loja</a>
+          </div>
+        </div>
+        <div class="stack">
+          <article>
+            <span>01 · Institucional</span>
+            <h3>Press kit e booking</h3>
+          </article>
+          <article>
+            <span>02 · Comercial</span>
+            <h3>Packs, serviços e eventos</h3>
+          </article>
+          <article>
+            <span>03 · Loja</span>
+            <h3>Produtos digitais</h3>
+          </article>
+        </div>
+      </section>
+      <section class="wrap">
+        <div class="heading">
+          <p class="eyebrow">Sua essência. Nossa arquitetura.</p>
+          <h2>O sistema se adapta ao artista, não o contrário.</h2>
+        </div>
+        <div class="universes">
+          <article>
+            <span>01</span>
+            <h3>Dark Tribal</h3>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Neon Techno</h3>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Minimal Premium</h3>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Pop Open Format</h3>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>Autoral</h3>
+          </article>
+        </div>
+      </section>
+      <section class="wrap">
+        <div class="heading">
+          <p class="eyebrow">Como construímos</p>
+          <h2>Da leitura do artista à publicação.</h2>
+        </div>
+        <ol class="process">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Diagnóstico</h3>
+              <p>Momento de carreira, público e objetivos.</p>
             </div>
-          </div>
-          <div class="mockup-btn">Booking</div>
-          <div class="mockup-social">
-            <div class="mockup-social-icon"></div>
-            <div class="mockup-social-icon"></div>
-            <div class="mockup-social-icon"></div>
-            <div class="mockup-social-icon"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PALCO DIGITAL ════════════════════════ -->
-<section class="palco" id="palco">
-  <div class="container">
-    <div class="palco-text">
-      <div class="section-label">Mais que um site</div>
-      <h2 class="section-title">Seu palco digital.<br>Sua autoridade online.</h2>
-      <p class="section-desc">
-        O HAUCK Stage n&atilde;o &eacute; um site gen&eacute;rico. &Eacute; uma solu&ccedil;&atilde;o pensada exclusivamente
-        pra quem vive de m&uacute;sica. Landing page, press kit, player, booking e downloads
-        &mdash; tudo num &uacute;nico lugar, com visual que combina com o seu som.
-      </p>
-      <div class="palco-features">
-        <div class="palco-feature">
-          <div class="palco-feature-icon">&#9835;</div>
-          <div>
-            <h4>Player integrado</h4>
-            <p>Suas faixas tocando direto no site. Sem redirecionar pra outro lugar.</p>
-          </div>
-        </div>
-        <div class="palco-feature">
-          <div class="palco-feature-icon">&#9733;</div>
-          <div>
-            <h4>Press kit profissional</h4>
-            <p>Bio, fotos, releases e contato &mdash; tudo pronto pra quem quer te contratar.</p>
-          </div>
-        </div>
-        <div class="palco-feature">
-          <div class="palco-feature-icon">&#8595;</div>
-          <div>
-            <h4>Central de downloads</h4>
-            <p>Distribua faixas, packs e conte&uacute;do exclusivo direto pro seu p&uacute;blico.</p>
-          </div>
-        </div>
-        <div class="palco-feature">
-          <div class="palco-feature-icon">&#9993;</div>
-          <div>
-            <h4>Booking direto</h4>
-            <p>Formul&aacute;rio ou bot&atilde;o de contato pra receber propostas sem intermedi&aacute;rio.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="palco-visual">
-      <div class="palco-card">
-        <div class="palco-card-icon">&#127911;</div>
-        <h5>Feito pra quem toca</h5>
-        <p>Design pensado pro universo da m&uacute;sica eletr&ocirc;nica, n&atilde;o template de ag&ecirc;ncia.</p>
-      </div>
-      <div class="palco-card">
-        <div class="palco-card-icon">&#128241;</div>
-        <h5>Mobile-first</h5>
-        <p>Perfeito no celular, onde seu p&uacute;blico realmente est&aacute;.</p>
-      </div>
-      <div class="palco-card">
-        <div class="palco-card-icon">&#9889;</div>
-        <h5>Velocidade</h5>
-        <p>Carregamento instant&acirc;neo, sem travar.</p>
-      </div>
-      <div class="palco-card">
-        <div class="palco-card-icon">&#128274;</div>
-        <h5>Dom&iacute;nio pr&oacute;prio</h5>
-        <p>Seu nome, sua marca, sua URL.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PLANOS ════════════════════════════════ -->
-<section class="planos" id="planos">
-  <div class="container text-center">
-    <div class="section-label">Escolha seu modelo</div>
-    <h2 class="section-title">Tr&ecirc;s n&iacute;veis. Um objetivo:<br>sua presen&ccedil;a profissional.</h2>
-    <p class="section-desc">
-      Do DJ que est&aacute; come&ccedil;ando ao headliner que precisa de uma estrutura completa.
-      Cada plano foi pensado pra um momento diferente da carreira.
-    </p>
-    <div class="planos-grid">
-
-      <!-- WARM-UP -->
-      <div class="plano-card">
-        <div class="plano-icon">&#127777;</div>
-        <h3 class="plano-name">Warm-Up</h3>
-        <p class="plano-desc">Landing premium pra quem quer sair do Linktree e marcar presen&ccedil;a de verdade.</p>
-        <div class="plano-divider"></div>
-        <ul class="plano-features">
-          <li class="highlight">Landing page premium com bio completa</li>
-          <li>Player integrado com at&eacute; 20 faixas</li>
-          <li>At&eacute; 10 free downloads</li>
-          <li>Links de redes sociais</li>
-          <li>Bot&atilde;o de booking direto</li>
-          <li>Design dark &amp; responsivo</li>
-          <li>Dom&iacute;nio personalizado</li>
-        </ul>
-        <a href="https://wa.me/5534997683468?text=Tenho%20interesse%20no%20plano%20Warm-Up%20do%20HAUCK%20Stage" target="_blank" rel="noopener" class="plano-cta outline">Quero o Warm-Up</a>
-      </div>
-
-      <!-- MAINSTAGE -->
-      <div class="plano-card featured">
-        <div class="plano-badge">Mais popular</div>
-        <div class="plano-icon">&#127775;</div>
-        <h3 class="plano-name">Mainstage</h3>
-        <p class="plano-desc">Vers&atilde;o completa com estrutura comercial pra quem j&aacute; roda e quer crescer.</p>
-        <div class="plano-divider"></div>
-        <ul class="plano-features">
-          <li class="highlight">Tudo do Warm-Up, mais:</li>
-          <li>Cat&aacute;logo expandido de faixas</li>
-          <li>Mais downloads dispon&iacute;veis</li>
-          <li class="highlight">Se&ccedil;&atilde;o de lan&ccedil;amentos / releases</li>
-          <li class="highlight">Venda de packs e faixas</li>
-          <li>Prova social (depoimentos, logos)</li>
-          <li>Estrutura comercial mais forte</li>
-          <li>SEO otimizado</li>
-        </ul>
-        <a href="https://wa.me/5534997683468?text=Tenho%20interesse%20no%20plano%20Mainstage%20do%20HAUCK%20Stage" target="_blank" rel="noopener" class="plano-cta primary">Quero o Mainstage</a>
-      </div>
-
-      <!-- HEADLINER APP -->
-      <div class="plano-card">
-        <div class="plano-icon">&#128081;</div>
-        <h3 class="plano-name">Headliner App</h3>
-        <p class="plano-desc">Experi&ecirc;ncia premium com vis&atilde;o app-like, analytics e automa&ccedil;&otilde;es.</p>
-        <div class="plano-divider"></div>
-        <ul class="plano-features">
-          <li class="highlight">Tudo do Mainstage, mais:</li>
-          <li class="highlight">Experi&ecirc;ncia app-like personalizada</li>
-          <li>Cat&aacute;logo maior de faixas e packs</li>
-          <li class="highlight">Central de downloads avan&ccedil;ada</li>
-          <li class="highlight">Booking premium com formul&aacute;rio completo</li>
-          <li>Automa&ccedil;&otilde;es (e-mail, notifica&ccedil;&otilde;es)</li>
-          <li class="highlight">Analytics e m&eacute;tricas de acesso</li>
-          <li>Design 100% personalizado</li>
-        </ul>
-        <a href="https://wa.me/5534997683468?text=Tenho%20interesse%20no%20plano%20Headliner%20App%20do%20HAUCK%20Stage" target="_blank" rel="noopener" class="plano-cta outline">Quero o Headliner</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ DEMO / CASE ══════════════════════════ -->
-<section class="demo" id="demo">
-  <div class="container">
-    <div class="demo-browser">
-      <div class="demo-browser-bar">
-        <div class="demo-dot"></div>
-        <div class="demo-dot"></div>
-        <div class="demo-dot"></div>
-        <div class="demo-url">apolo-oliver-site.vercel.app</div>
-      </div>
-      <div class="demo-screen">
-        <div class="demo-screen-avatar"></div>
-        <div class="demo-screen-name">Apolo Oliver</div>
-        <div class="demo-screen-tag">DJ &bull; Produtor</div>
-        <div class="demo-screen-bars">
-          <div class="demo-bar" style="height:15px"></div>
-          <div class="demo-bar" style="height:25px"></div>
-          <div class="demo-bar" style="height:35px"></div>
-          <div class="demo-bar" style="height:20px"></div>
-          <div class="demo-bar" style="height:40px"></div>
-          <div class="demo-bar" style="height:30px"></div>
-          <div class="demo-bar" style="height:22px"></div>
-          <div class="demo-bar" style="height:38px"></div>
-          <div class="demo-bar" style="height:18px"></div>
-          <div class="demo-bar" style="height:28px"></div>
-          <div class="demo-bar" style="height:33px"></div>
-          <div class="demo-bar" style="height:15px"></div>
-          <div class="demo-bar" style="height:40px"></div>
-          <div class="demo-bar" style="height:25px"></div>
-          <div class="demo-bar" style="height:35px"></div>
-          <div class="demo-bar" style="height:20px"></div>
-          <div class="demo-bar" style="height:30px"></div>
-          <div class="demo-bar" style="height:38px"></div>
-          <div class="demo-bar" style="height:22px"></div>
-          <div class="demo-bar" style="height:28px"></div>
-        </div>
-      </div>
-    </div>
-    <div class="demo-info">
-      <h3>Case real</h3>
-      <h2>Veja o HAUCK Stage<br>em a&ccedil;&atilde;o</h2>
-      <p>
-        O site do Apolo Oliver &eacute; um exemplo real do que o HAUCK Stage entrega:
-        player funcional, visual dark premium, booking direto e uma experi&ecirc;ncia
-        que converte visitante em f&atilde; &mdash; e f&atilde; em contrato.
-      </p>
-      <div class="demo-stats">
-        <div class="demo-stat">
-          <div class="demo-stat-value">100%</div>
-          <div class="demo-stat-label">Responsivo</div>
-        </div>
-        <div class="demo-stat">
-          <div class="demo-stat-value">&lt;2s</div>
-          <div class="demo-stat-label">Carregamento</div>
-        </div>
-        <div class="demo-stat">
-          <div class="demo-stat-value">24/7</div>
-          <div class="demo-stat-label">No ar</div>
-        </div>
-      </div>
-      <a href="https://apolo-oliver-site.vercel.app" target="_blank" rel="noopener" class="btn-primary">
-        Ver demo ao vivo &rarr;
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ BENEFÍCIOS ════════════════════════════ -->
-<section class="beneficios" id="beneficios">
-  <div class="container text-center">
-    <div class="section-label">Por que o Stage</div>
-    <h2 class="section-title">Tudo que voc&ecirc; precisa.<br>Nada que voc&ecirc; n&atilde;o pediu.</h2>
-    <p class="section-desc">
-      Cada recurso foi pensado pra resolver um problema real de quem vive de m&uacute;sica.
-    </p>
-    <div class="beneficios-grid">
-      <div class="beneficio">
-        <div class="beneficio-icon">&#127908;</div>
-        <h4>Booking sem atrito</h4>
-        <p>Contratantes chegam direto no seu WhatsApp ou formul&aacute;rio. Sem e-mail perdido, sem intermedi&aacute;rio.</p>
-      </div>
-      <div class="beneficio">
-        <div class="beneficio-icon">&#9654;</div>
-        <h4>Player que toca de verdade</h4>
-        <p>Suas faixas com waveform, controle de volume e experi&ecirc;ncia de streaming. Direto no seu site.</p>
-      </div>
-      <div class="beneficio">
-        <div class="beneficio-icon">&#8595;</div>
-        <h4>Downloads que convertem</h4>
-        <p>Distribua faixas grátis, packs pagos ou conte&uacute;do exclusivo. Voc&ecirc; controla quem baixa o qu&ecirc;.</p>
-      </div>
-      <div class="beneficio">
-        <div class="beneficio-icon">&#128142;</div>
-        <h4>Imagem profissional</h4>
-        <p>Chega de Linktree. Seu dom&iacute;nio, seu design, sua marca. A primeira impress&atilde;o que fecha contrato.</p>
-      </div>
-      <div class="beneficio">
-        <div class="beneficio-icon">&#128230;</div>
-        <h4>Venda de packs</h4>
-        <p>Monetize seu conte&uacute;do: sample packs, remix packs, faixas exclusivas. Tudo integrado.</p>
-      </div>
-      <div class="beneficio">
-        <div class="beneficio-icon">&#128200;</div>
-        <h4>Autoridade no mercado</h4>
-        <p>Um site profissional muda como promoters, selos e f&atilde;s enxergam voc&ecirc;. &Eacute; o seu palco permanente.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ COMO FUNCIONA ════════════════════════ -->
-<section class="como-funciona" id="como-funciona">
-  <div class="container text-center">
-    <div class="section-label">Processo</div>
-    <h2 class="section-title">4 passos pro seu<br>palco ficar pronto</h2>
-    <p class="section-desc">
-      Sem burocracia, sem demora. Voc&ecirc; foca na m&uacute;sica, a gente cuida do resto.
-    </p>
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h4>Conversa inicial</h4>
-        <p>Voc&ecirc; conta o que precisa, manda suas m&uacute;sicas, bio e refer&ecirc;ncias visuais.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h4>Design &amp; estrutura</h4>
-        <p>Criamos o layout personalizado com seu visual, player, links e se&ccedil;&otilde;es.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h4>Revis&atilde;o &amp; ajustes</h4>
-        <p>Voc&ecirc; revisa, pede altera&ccedil;&otilde;es, e a gente refina at&eacute; ficar perfeito.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">4</div>
-        <h4>Deploy &amp; go live</h4>
-        <p>Site no ar com dom&iacute;nio pr&oacute;prio, pronto pra receber visitas e bookings.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ GALERIA DE MODELOS ════════════════════ -->
-<section class="galeria" id="modelos">
-  <div class="container text-center">
-    <div class="section-label">Modelos</div>
-    <h2 class="section-title">Cada modelo, um palco diferente</h2>
-    <p class="section-desc">
-      Visual que combina com o seu som. Cada modelo &eacute; &uacute;nico e personaliz&aacute;vel.
-    </p>
-    <div class="galeria-grid">
-      <div class="galeria-item">
-        <div class="galeria-preview">
-          <div class="galeria-preview-circle"></div>
-          <div class="galeria-preview-name">Modelo Alpha</div>
-          <div class="galeria-preview-genre">Minimal &bull; Tech</div>
-          <div class="galeria-preview-elements">
-            <div class="galeria-bar"></div>
-            <div class="galeria-bar"></div>
-            <div class="galeria-bar"></div>
-          </div>
-        </div>
-        <div class="galeria-info">
-          <h4>Clean &amp; direto</h4>
-          <p>Layout minimalista com foco no player e booking.</p>
-          <span class="galeria-tag warmup">Warm-Up</span>
-        </div>
-      </div>
-      <div class="galeria-item">
-        <div class="galeria-preview">
-          <div class="galeria-preview-circle"></div>
-          <div class="galeria-preview-name">Modelo Neon</div>
-          <div class="galeria-preview-genre">House &bull; Disco</div>
-          <div class="galeria-preview-elements">
-            <div class="galeria-bar"></div>
-            <div class="galeria-bar"></div>
-            <div class="galeria-bar"></div>
-          </div>
-        </div>
-        <div class="galeria-info">
-          <h4>Vibrante &amp; completo</h4>
-          <p>Releases, packs, prova social e estrutura comercial.</p>
-          <span class="galeria-tag mainstage">Mainstage</span>
-        </div>
-      </div>
-      <div class="galeria-item">
-        <div class="galeria-preview">
-          <div class="galeria-preview-circle"></div>
-          <div class="galeria-preview-name">Modelo Flux</div>
-          <div class="galeria-preview-genre">Afro &bull; Melodic</div>
-          <div class="galeria-preview-elements">
-            <div class="galeria-bar"></div>
-            <div class="galeria-bar"></div>
-            <div class="galeria-bar"></div>
-          </div>
-        </div>
-        <div class="galeria-info">
-          <h4>Premium &amp; imersivo</h4>
-          <p>Experi&ecirc;ncia app-like com analytics e automa&ccedil;&otilde;es.</p>
-          <span class="galeria-tag headliner">Headliner</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ FAQ ═══════════════════════════════════ -->
-<section class="faq" id="faq">
-  <div class="container text-center">
-    <div class="section-label">D&uacute;vidas</div>
-    <h2 class="section-title">Perguntas frequentes</h2>
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h4>Qual a diferen&ccedil;a entre HAUCK Stage e um site comum?</h4>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            O HAUCK Stage n&atilde;o &eacute; um template gen&eacute;rico. &Eacute; uma solu&ccedil;&atilde;o pensada exclusivamente
-            pra DJs e produtores: player funcional, central de downloads, booking integrado,
-            visual nightlife e estrutura de press kit. Tudo o que uma ag&ecirc;ncia tradicional
-            n&atilde;o entende do seu mercado.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h4>Preciso saber programar?</h4>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            N&atilde;o. Voc&ecirc; manda seu material (m&uacute;sicas, bio, fotos, refer&ecirc;ncias) e a gente
-            cuida de todo o desenvolvimento. Voc&ecirc; s&oacute; revisa e aprova.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h4>Quanto tempo leva pra ficar pronto?</h4>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Depende do plano. O Warm-Up fica pronto em poucos dias. O Mainstage e Headliner
-            podem levar de 1 a 3 semanas, dependendo da complexidade e das revis&otilde;es.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h4>Posso trocar de plano depois?</h4>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Sim. Voc&ecirc; pode come&ccedil;ar com o Warm-Up e evoluir pro Mainstage ou Headliner
-            quando sentir que precisa de mais recursos. A transi&ccedil;&atilde;o &eacute; suave e aproveita
-            todo o trabalho j&aacute; feito.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h4>Como funciona o player de m&uacute;sicas?</h4>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            O player integrado roda suas faixas direto no site, com waveform visual e
-            controles de reprodu&ccedil;&atilde;o. O visitante ouve sem sair da p&aacute;gina. Voc&ecirc; controla
-            quais faixas aparecem e a ordem de exibi&ccedil;&atilde;o.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h4>Inclui hospedagem e dom&iacute;nio?</h4>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Sim. O deploy &eacute; feito em plataformas r&aacute;pidas e confi&aacute;veis, e voc&ecirc; pode usar
-            seu dom&iacute;nio personalizado (ex: seunome.com). Orientamos todo o processo de
-            configura&ccedil;&atilde;o.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h4>E se eu quiser vender packs ou faixas?</h4>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Os planos Mainstage e Headliner incluem estrutura pra venda de conte&uacute;do:
-            sample packs, remix packs, faixas exclusivas. Voc&ecirc; define os pre&ccedil;os e a
-            forma de entrega. &Eacute; mais um canal de receita direto, sem intermedi&aacute;rio.
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CTA FINAL ════════════════════════════ -->
-<section class="cta-final">
-  <div class="container">
-    <h2>Pronto pra subir<br>no <span class="accent">palco</span>?</h2>
-    <p>
-      Seu pr&oacute;ximo booking pode come&ccedil;ar com um site que impressiona.
-      Fala com a gente e vamos montar o seu Stage.
-    </p>
-    <a href="https://wa.me/5534997683468?text=Quero%20meu%20site%20de%20DJ%20%E2%80%94%20HAUCK%20Stage" target="_blank" rel="noopener" class="btn-primary">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      Quero meu site de DJ
-    </a>
-  </div>
-</section>
-
-<!-- ═══ FOOTER ════════════════════════════════ -->
-<footer class="footer">
-  <div class="container">
-    <p>&copy; 2024&ndash;2026 <a href="#">HAUCK.CO</a> &mdash; Sites premium pra quem vive de m&uacute;sica.</p>
-  </div>
-</footer>
-
-<!-- ═══ SCRIPTS ═══════════════════════════════ -->
-<script>
-// FAQ Toggle
-function toggleFaq(el) {
-  const item = el.parentElement;
-  const wasActive = item.classList.contains('active');
-  // Close all
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-  // Toggle clicked
-  if (!wasActive) item.classList.add('active');
-}
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Close mobile menu
-      document.querySelector('.nav-links').classList.remove('open');
-    }
-  });
-});
-
-// Nav scroll effect
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-  const nav = document.getElementById('nav');
-  const scroll = window.scrollY;
-  if (scroll > 100) {
-    nav.style.padding = '10px 0';
-  } else {
-    nav.style.padding = '16px 0';
-  }
-  lastScroll = scroll;
-});
-
-// Intersection Observer for fade-in
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.plano-card, .beneficio, .step, .galeria-item, .faq-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(30px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  observer.observe(el);
-});
-</script>
-
-</body>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Direção</h3>
+              <p>Posicionamento, arquitetura e identidade.</p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Construção</h3>
+              <p>Página, módulos, integrações e conteúdo.</p>
+            </div>
+          </li>
+          <li>
+            <span>04</span>
+            <div>
+              <h3>Entrada em cena</h3>
+              <p>Domínio, revisão mobile e publicação.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <section id="contato" class="wrap final">
+        <p class="eyebrow">O próximo nome do line-up pode ser o seu</p>
+        <h2>Sua carreira já tem som.<br />Agora ela precisa de palco.</h2>
+        <a class="btn primary big" data-link="whatsapp" href="#"
+          >Quero construir meu palco</a
+        >
+      </section>
+    </main>
+    <footer class="wrap">
+      <a class="brand" data-link="hauckco" href="#"><b>HAUCK</b><i>Stage</i></a>
+      <p>Uma frente HAUCK.CO para artistas, DJs e produtores.</p>
+    </footer>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
