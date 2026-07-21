@@ -1,7 +1,7 @@
 window.HAUCK_STAGE_CONFIG = {
   links: {
     whatsapp:
-      "https://wa.me/5534997683468?text=Quero%20conhecer%20a%20HAUCK%20Stage",
+      "https://wa.me/5534992018228?text=Quero%20conhecer%20a%20HAUCK%20Stage",
     hauckco: "https://hauckco.ai",
     apoloMain: "https://apolooliver.hauckco.ai",
     apoloStore: "https://apolooliver.hauckco.ai/loja",
@@ -19,6 +19,8 @@ window.HAUCK_STAGE_CONFIG = {
       features: [
         "Landing responsiva com identidade",
         "Player e catálogo inicial",
+        "5 downloads gratuitos",
+        "Até 10 itens à venda",
         "Links, bio e contato",
         "Agenda ou próximos lançamentos",
         "Estrutura preparada para evolução",
@@ -36,6 +38,8 @@ window.HAUCK_STAGE_CONFIG = {
       features: [
         "Tudo do Warm-Up",
         "Catálogo ampliado",
+        "15 downloads gratuitos",
+        "Até 30 itens à venda",
         "Electronic press kit",
         "Agenda e booking estruturado",
         "Área para packs e prévias",
@@ -53,6 +57,8 @@ window.HAUCK_STAGE_CONFIG = {
       cta: "Desenhar meu Headliner",
       features: [
         "Tudo do Mainstage",
+        "Downloads gratuitos ilimitados",
+        "Itens à venda ilimitados",
         "Arquitetura e direção exclusivas",
         "Loja e produtos digitais",
         "Área de fãs ou conteúdo premium",

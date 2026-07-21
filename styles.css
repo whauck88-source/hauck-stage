@@ -473,7 +473,8 @@ code {
     padding: 16px;
     border: 1px solid var(--line);
     border-radius: 18px;
-    background: #0a0d13f5;
+    background: #0a0d13;
+    backdrop-filter: blur(18px);
     box-shadow: 0 24px 60px #000a;
   }
   header.open nav a {
