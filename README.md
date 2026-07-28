@@ -1,22 +1,23 @@
-# HAUCK Stage — landing definitiva
+# HAUCK Stage
 
-Esta versão funde os dois conceitos anteriores:
+Aplicação web da HAUCK Stage com vitrine pública, página Mainstage do Dih Ribeiro,
+acesso privado do artista, Road to Zero, Content Lab, envio de links e painel
+administrativo.
 
-- Base visual: atmosfera escura, artística e premium da landing azul/dourada.
-- Estrutura comercial: clareza dos planos e CTAs da landing vermelha.
-- Planos oficiais: Warm-Up, Mainstage e Headliner App.
-- Case Apolo Oliver: presença institucional + hub comercial + loja digital.
+## Preparação local
 
-## Antes de publicar
+1. Copie `.env.example` para `.env`.
+2. Preencha a URL e a chave pública do projeto Supabase.
+3. Execute `npm install` e `npm run dev`.
 
-Edite `config.js`:
+## Validação antes de produção
 
-1. WhatsApp.
-2. Preços aprovados.
-3. Link principal do Apolo.
-4. Link da loja digital.
-5. Link de retorno para HAUCK.CO.
+- aplicar e revisar a migração em `supabase/migrations`;
+- cadastrar `admin_owner_email` como configuração privada no banco;
+- confirmar o vínculo entre o usuário do Dih e o cadastro do artista;
+- validar remetente, URL de retorno e domínio dos links mágicos;
+- executar `npm run build` e a auditoria visual;
+- publicar somente após aprovação expressa.
 
-A pasta `assets` está pronta para receber fotos, capas, logos e screenshots reais.
-
-Domínio sugerido: `stage.hauckco.ai`.
+Os valores individuais e de catálogo são mantidos separadamente em
+`src/stage.ts`. O WhatsApp oficial fica centralizado no mesmo arquivo.

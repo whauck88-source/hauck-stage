@@ -1,0 +1,13 @@
+import { Children, createContext, isValidElement, useCallback, useContext, useEffect, useMemo, useState } from "react";
+
+type RouterValue={pathname:string;search:string;navigate:(to:string,replace?:boolean)=>void};
+const RouterContext=createContext<RouterValue|null>(null);
+
+export function BrowserRouter({children}:{children:React.ReactNode}){const [location,setLocation]=useState(()=>({pathname:window.location.pathname,search:window.location.search}));useEffect(()=>{const onPop=()=>setLocation({pathname:window.location.pathname,search:window.location.search});window.addEventListener("popstate",onPop);return()=>window.removeEventListener("popstate",onPop)},[]);const value=useMemo<RouterValue>(()=>({...location,navigate:(to,replace=false)=>{if(replace)history.replaceState(null,"",to);else history.pushState(null,"",to);setLocation({pathname:window.location.pathname,search:window.location.search});window.scrollTo({top:0,behavior:"instant"})}}),[location]);return <RouterContext.Provider value={value}>{children}</RouterContext.Provider>}
+export function useNavigate(){const r=useContext(RouterContext);if(!r)throw new Error("Router ausente");return useCallback((to:string,opts?:{replace?:boolean})=>r.navigate(to,opts?.replace),[r])}
+export function useLocation(){const r=useContext(RouterContext);if(!r)throw new Error("Router ausente");return{pathname:r.pathname,search:r.search}}
+export function Link({to,className,children,...props}:{to:string;className?:string;children:React.ReactNode}&React.AnchorHTMLAttributes<HTMLAnchorElement>){const nav=useNavigate();return <a href={to} className={className} {...props} onClick={e=>{props.onClick?.(e);if(!e.defaultPrevented&&e.button===0&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey){e.preventDefault();nav(to)}}}>{children}</a>}
+export function NavLink({to,className,children}:{to:string;className?:string;children:React.ReactNode}){const {pathname}=useLocation();return <Link to={to} className={`${className||""} ${pathname===to?"active":""}`.trim()}>{children}</Link>}
+export function Navigate({to,replace=false}:{to:string;replace?:boolean}){const nav=useNavigate();useEffect(()=>nav(to,{replace}),[to,replace,nav]);return null}
+export function Route(_props:{path:string;element:React.ReactNode}){return null}
+export function Routes({children}:{children:React.ReactNode}){const {pathname}=useLocation();const items=Children.toArray(children);for(const child of items){if(isValidElement<{path:string;element:React.ReactNode}>(child)){if(child.props.path===pathname)return child.props.element;if(child.props.path==="*")continue}}const fallback=items.find(x=>isValidElement<{path:string}>(x)&&x.props.path==="*");return isValidElement<{element:React.ReactNode}>(fallback)?fallback.props.element:null}
