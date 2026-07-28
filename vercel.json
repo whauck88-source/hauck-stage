@@ -1,6 +1,9 @@
 {
   "version": 2,
   "name": "hauck-stage",
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
